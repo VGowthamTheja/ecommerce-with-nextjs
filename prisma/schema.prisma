@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model products {
+  id           Int      @id @default(autoincrement())
+  product_name String   @unique(map: "product_name_UNIQUE") @db.VarChar(255)
+  description  String?  @db.LongText
+  category     String   @db.VarChar(255)
+  brand        String   @db.VarChar(255)
+  price        Float    @db.Float
+  discount     Float?   @db.Float
+  quantity     BigInt   @default(1)
+  image        String   @db.MediumText
+  rating       Float?   @default(1) @db.Float
+  featured     Int      @default(0) @db.TinyInt
+  new_arrival  Int?     @default(0) @db.TinyInt
+  created_at   DateTime @db.DateTime(0)
+  updated_at   DateTime @db.DateTime(0)
+  active       Boolean  @default(true)
+  visible      Boolean  @default(true)
+}
+
+model record {
+  id           Int     @id
+  new_tablecol Boolean
+}
+
+model tasks {
+  id        Int      @id @default(autoincrement())
+  task_name String   @db.VarChar(255)
+  desc      String?  @db.LongText
+  completed Boolean
+  created   DateTime @db.DateTime(0)
+  updated   DateTime @db.DateTime(0)
+}
