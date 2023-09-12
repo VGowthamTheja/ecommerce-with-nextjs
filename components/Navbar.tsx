@@ -7,9 +7,12 @@ import {
   NavbarContent,
   NavbarItem,
   Button,
+  Input,
 } from "@nextui-org/react";
 import Link from "next/link";
 import React from "react";
+import SideNavMenu from "./SideNavMenu";
+import IconSearchLine from "@/icons/SearchIcon";
 
 const Topbar = () => {
   return (
@@ -30,10 +33,13 @@ const Topbar = () => {
         justify="center"
       ></NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+        <NavbarItem>
+          <Input
+            placeholder="Quick Search"
+            width="15rem"
+            startContent={<IconSearchLine className="w-4 h-4 text-gray-500" />}
+          />
         </NavbarItem>
-        <NavbarItem></NavbarItem>
       </NavbarContent>
     </Navbar>
   );
