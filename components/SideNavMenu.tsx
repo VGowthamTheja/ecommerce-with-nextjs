@@ -2,9 +2,10 @@
 
 import IconClose from "@/icons/CloseIcon";
 import IconMenu from "@/icons/HamburgerIcon";
-import { Button } from "@nextui-org/react";
+import { Button, Link, User } from "@nextui-org/react";
 import classNames from "classnames";
 import { Fragment, useState } from "react";
+import CountryMap from "./CountryMap";
 
 const SideNavMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,8 +38,23 @@ const SideNavMenu = () => {
         >
           <IconClose />
         </Button>
-        <h2 className="mt-20 text-4xl font-semibold">I am a sidebar</h2>
-
+        <div className="flex flex-col items-start justify-center pt-10">
+          {/* user info */}
+          <User
+            name="Junior Garcia"
+            description={
+              <Link href="https://twitter.com/jrgarciadev" size="sm" isExternal>
+                @jrgarciadev
+              </Link>
+            }
+            avatarProps={{
+              src: "https://avatars.githubusercontent.com/u/30373425?v=4",
+            }}
+          />
+        </div>
+        <div className="absolute bottom-20 w-[159px] right-8 flex items-center text-black">
+          <CountryMap />
+        </div>
         <div className="absolute bottom-10 flex items-center justify-center">
           <p className="uppercase text-sm font-bold">
             © 2023 NextCommerce <span className="text-slate-500">v1.0.0</span>

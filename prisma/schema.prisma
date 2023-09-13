@@ -39,3 +39,22 @@ model tasks {
   created   DateTime @db.DateTime(0)
   updated   DateTime @db.DateTime(0)
 }
+
+// create a user model for an ecommerce app
+model users {
+  id           Int      @id @default(autoincrement())
+  first_name   String   @db.VarChar(255)
+  last_name    String   @db.VarChar(255)
+  email        String   @unique(map: "email_UNIQUE") @db.VarChar(255)
+  password     String   @db.VarChar(255)
+  phone_number String   @db.VarChar(255)
+  address      String   @db.VarChar(255)
+  city         String   @db.VarChar(255)
+  state        String   @db.VarChar(255)
+  zip_code     String   @db.VarChar(255)
+  country      String   @db.VarChar(255)
+  created_at   DateTime @db.DateTime(0)
+  updated_at   DateTime @db.DateTime(0)
+  active       Boolean  @default(true)
+  visible      Boolean  @default(true)
+}
