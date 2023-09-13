@@ -15,7 +15,7 @@ model products {
   brand        String   @db.VarChar(255)
   price        Float    @db.Float
   discount     Float?   @db.Float
-  quantity     BigInt   @default(1)
+  quantity     Int      @default(1)
   image        String   @db.MediumText
   rating       Float?   @default(1) @db.Float
   featured     Int      @default(0) @db.TinyInt
