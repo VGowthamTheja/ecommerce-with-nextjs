@@ -1,10 +1,10 @@
 "use client";
 
 import { useAppState } from "@/context/state";
+import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 import { products } from "@prisma/client";
 import { getParamByISO } from "iso-country-currency";
 
-import Image from "next/image";
 import React from "react";
 
 type Props = {
@@ -14,23 +14,25 @@ type Props = {
 const ProductCard = ({ product }: Props) => {
   const { state, setState } = useAppState();
   return (
-    <div className="flex flex-col items-center justify-center border rounded-md">
-      <div className="">
+    <Card shadow="sm" isPressable onPress={() => console.log("item pressed")}>
+      <CardBody className="overflow-visible p-0">
         <Image
-          src={product.image}
+          shadow="sm"
+          radius="lg"
+          width="200px"
+          height="200px"
           alt={product.product_name}
-          width={200}
-          height={200}
-          className="object-cover"
+          className="w-full object-cover"
+          src={product.image}
         />
-      </div>
-      <div className="flex flex-col items-center justify-center w-full pt-1">
-        <h1 className="text-sm font-bold">{product.product_name}</h1>
-        <h1 className="text-sm font-bold">
+      </CardBody>
+      <CardFooter className="text-small justify-between flex flex-col">
+        <b>{product.product_name}</b>
+        <p className="text-default-500">
           {getParamByISO(state.currency, "symbol")} {product.price}
-        </h1>
-      </div>
-    </div>
+        </p>
+      </CardFooter>
+    </Card>
   );
 };
 

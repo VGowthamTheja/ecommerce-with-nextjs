@@ -4,8 +4,8 @@ import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
-  title: "NextCommerce: Admin",
-  description: "Admin panel for NextCommerce",
+  title: "NextCommerce: Register",
+  description: "Authentication for NextCommerce",
 };
 
 export default function RootLayout({
@@ -16,10 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>
-          <Toaster />
-          {children}
-        </Providers>
+        <Toaster />
+        {children}
       </body>
     </html>
   );
