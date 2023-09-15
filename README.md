@@ -1,34 +1,127 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- write a README about the NEXTCOMMERCE site by scanning the code base -->
 
-## Getting Started
+# NEXTCOMMERCE
 
-First, run the development server:
+## Description
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+NEXTCOMMERCE is a full stack e-commerce application that allows users to create an account, browse products, add products to a cart, and checkout. The application is built with React, Redux, Node, Express, and MongoDB.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Table of Contents
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [NEXTCOMMERCE](#nextcommerce)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Questions](#questions)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [Technologies](#technologies)
+  - [Links](#links)
+  - [Screenshots](#screenshots)
+  - [Credits](#credits)
+  - [Contact](#contact)
+  - [Badges](#badges)
+  - [Features](#features)
+  - [Contributions](#contributions)
+  - [Show your support](#show-your-support)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation
 
-## Learn More
+To install the application locally, clone the repository and run `npm install` to install dependencies. Then, run `npm start` to start the server.
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To use the application, visit the deployed site at [NEXTCOMMERCE](https://nextcommerce.herokuapp.com/). To use the application locally, run `npm start` to start the server and visit `localhost:3000` in your browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+This application is covered under the MIT license.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Questions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+For any questions, contact me at [Gowtham's GitHub](https://github.com/VGowthamTheja) or email me at [my email](mailto:vempalligowthamtheja@gmail.com).
+
+## Contributing
+
+To contribute to the application, create an issue or a pull request.
+
+## Tests
+
+To test the application, run `npm test`.
+
+## Technologies
+
+- NextJS
+- MySQL
+- Prisma
+- Tailwind CSS
+- React
+  
+## Links
+
+- [Deployed Application](https://nextcommerce.herokuapp.com/)
+- [GitHub Repository](https://github.com/VGowthamTheja/ecommerce-with-nextjs)
+
+## Screenshots
+
+![Screenshot of the application](public/homepage.png)
+![Screenshot of the application](public/login.png)
+![Screenshot of the application](public/signup.png)
+![Screenshot of the application](public/sidebar.png)
+
+## Credits
+
+- [React](https://reactjs.org/)
+- [NextJS](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Prisma](https://www.prisma.io/)
+- [MySQL](https://www.mysql.com/)
+- [Vercel](https://vercel.com/)
+
+## Contact
+
+Contact me at [My GitHub](https://github.com/VGowthamTheja/ecommerce-with-nextjs) or [My Email](mailto:vempalligowthamtheja@gmail.com)
+
+## Badges
+
+![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+
+![badmath](https://img.shields.io/github/languages/count/nielsenjared/badmath)
+
+![badmath](https://img.shields.io/github/languages/code-size/nielsenjared/badmath)
+
+![badmath](https://img.shields.io/github/issues/nielsenjared/badmath)
+
+![badmath](https://img.shields.io/github/issues-pr/nielsenjared/badmath)
+
+![badmath](https://img.shields.io/github/last-commit/nielsenjared/badmath)
+
+![badmath](https://img.shields.io/github/followers/nielsenjared?label=Follow&style=social)
+
+## Features
+
+- [x] Authentication
+- [ ] Product Search
+- [ ] Product Filtering
+- [ ] Cart
+- [ ] Cart Checkout
+- [ ] Order History
+- [ ] Product Reviews
+- [ ] Product Ratings
+- [ ] Product Recommendations
+- [x] Product Categories
+- [ ] Product Tags
+- [x] Product Sorting
+- [ ] Product Pagination
+
+## Contributions
+
+Contributions, issues and feature requests are welcome.
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+***
