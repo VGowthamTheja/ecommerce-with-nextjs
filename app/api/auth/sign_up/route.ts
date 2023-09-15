@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import prisma from "@/prisma/db";
+import { sendMail } from "@/lib/helpers/mailer";
 
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
         const { email, password, username } = reqBody;
-        console.log(reqBody);
 
         if (!email || !password || !username) {
             return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -37,6 +37,9 @@ export async function POST(request: NextRequest) {
                 updated_at: new Date()
             }
         })
+
+        // send email verification email
+        await sendMail({ email, emailType: 'VERIFY', userId: newUser.id });
 
         return NextResponse.json({
             message: "User created successfully",

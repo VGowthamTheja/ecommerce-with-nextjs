@@ -59,8 +59,8 @@ model users {
   active                  Boolean   @default(true)
   visible                 Boolean   @default(true)
   verified                Boolean   @default(false)
-  forgot_password_token   String?   @db.VarChar(255)
+  forgot_password_token   String?   @unique(map: "forgot_password_token_UNIQUE") @db.VarChar(255)
   forgot_password_expires DateTime? @db.DateTime(0)
-  verification_token      String?   @db.VarChar(255)
+  verification_token      String?   @unique(map: "verification_token_UNIQUE") @db.VarChar(255)
   verification_expires    DateTime? @db.DateTime(0)
 }
