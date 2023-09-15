@@ -30,14 +30,14 @@ const Login = () => {
         body: JSON.stringify(user),
       });
 
+      const data = await res.json();
       if (res.ok) {
-        const data = await res.json();
         toast.success("Login Success");
         router.push("/");
       }
 
       if (res.status === 400) {
-        toast.error("Invalid Credentials");
+        toast.error(data.error);
       }
     } catch (error: any) {
       toast.error(error);
@@ -54,13 +54,15 @@ const Login = () => {
     <div className="flex flex-col max-w-xs mx-auto items-center justify-center min-h-screen py-2">
       <h1 className="text-3xl">Login</h1>
       <Divider className="h-1" />
-      <form className="flex flex-col gap-10 mt-8">
+      <form className="flex flex-col">
         <Input
-          className="w-full"
+          className="w-full mt-8"
           isRequired
           label="Email"
           labelPlacement="outside"
+          placeholder="Enter your email"
           variant="bordered"
+          autoFocus
           type="email"
           name="email"
           id="email"
@@ -69,10 +71,11 @@ const Login = () => {
           onChange={(e) => setUser({ ...user, email: e.target.value })}
         />
         <Input
-          className="w-full"
+          className="w-full mt-8"
           isRequired
           label="Password"
           labelPlacement="outside"
+          placeholder="Enter your password"
           variant="bordered"
           type={open ? "text" : "password"}
           name="password"
@@ -99,10 +102,15 @@ const Login = () => {
           color="primary"
           isLoading={loading}
           onClick={onLogin}
-          className="p-2 w-full border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+          className="p-2 w-full mt-8 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
         >
           {loading ? "Authenticating..." : "Login"}
         </Button>
+        <span className="text-center">
+          <Link href="/send_mail">
+            <span className="text-blue-500">Forgot Password?</span>
+          </Link>
+        </span>
         <span className="text-center">
           {"Don't have an account?"}{" "}
           <Link href="/signup">

@@ -30,6 +30,10 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: "Invalid credentials" }, { status: 400 });
         }
 
+        if (!user.verified) {
+            return NextResponse.json({ error: "Email not yet verified. Please verify your email and try again!" }, { status: 400 });
+        }
+
         // TODO: Generate JWT token
         const tokenData = {
             id: user.id,
