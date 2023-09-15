@@ -16,8 +16,8 @@ interface ProviderProps {
 
 const initialState: AppState = {
   cart: [],
-  currency: "IN",
-  currencySymbol: "₹",
+  currency: "US",
+  currencySymbol: "$",
   products: [],
   total: 0,
 };

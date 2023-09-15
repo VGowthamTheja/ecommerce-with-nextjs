@@ -8,22 +8,26 @@ import { getParamByISO } from "iso-country-currency";
 import React from "react";
 
 type Props = {
-  product: products;
+  product: any;
 };
 
 const ProductCard = ({ product }: Props) => {
   const { state, setState } = useAppState();
   return (
-    <Card shadow="sm" isPressable onPress={() => console.log("item pressed")}>
-      <CardBody className="overflow-visible p-0">
+    <Card
+      shadow="sm"
+      isPressable
+      isHoverable
+      fullWidth
+      onPress={() => console.log("item pressed")}
+    >
+      <CardBody className="overflow-y-hidden p-0 h-[200px]">
         <Image
           shadow="sm"
           radius="lg"
-          width="200px"
-          height="200px"
-          alt={product.product_name}
-          className="w-full object-cover"
-          src={product.image}
+          alt={product.title}
+          className="object-cover"
+          src={product.thumbnail}
         />
       </CardBody>
       <CardFooter className="text-small justify-between flex flex-col">

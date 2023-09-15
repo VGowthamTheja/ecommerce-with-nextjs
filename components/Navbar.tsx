@@ -8,6 +8,7 @@ import {
   NavbarItem,
   Button,
   Input,
+  Kbd,
 } from "@nextui-org/react";
 import Link from "next/link";
 import React from "react";
@@ -34,11 +35,13 @@ const Topbar = () => {
       ></NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <Input
-            placeholder="Quick Search"
-            width="15rem"
-            startContent={<IconSearchLine className="w-4 h-4 text-gray-500" />}
-          />
+          <Button
+            className=" border-1"
+            startContent={<IconSearchLine className="w-4 h-4 text-gray-300" />}
+            endContent={<Kbd keys={["command"]}>K</Kbd>}
+          >
+            Quick Search
+          </Button>
         </NavbarItem>
       </NavbarContent>
     </Navbar>

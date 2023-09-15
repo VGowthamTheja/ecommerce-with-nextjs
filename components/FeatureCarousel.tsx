@@ -2,15 +2,19 @@ import { products } from "@prisma/client";
 import Image from "next/image";
 import React from "react";
 import ProductCard from "./ProductCard";
+import IconBox_open from "@/icons/EmptyBoxIcon";
 
-const FeatureCarousel = async () => {
-  const response = await fetch("http://localhost:3000/api/v1/products");
-  const products = await response.json();
-
+const FeatureCarousel = ({ products }: any) => {
   return (
-    <div className=" h-[220px] py-8 px-6">
-      <div className="flex flex-row">
-        {products.map((product: products) => (
+    <div className="py-8 px-6">
+      <div className="grid grid-cols-6 gap-3">
+        {products.length === 0 && (
+          <div className="left-[50%]">
+            <IconBox_open className="w-16 h-16 text-white" />
+            <h1 className="text-2xl font-bold text-white">No products found</h1>
+          </div>
+        )}
+        {products.map((product: any) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
