@@ -3,7 +3,7 @@
 import FeatureCarousel from "@/components/FeatureCarousel";
 import { useAppState } from "@/context/state";
 import { sortProductByCategoryForTabs } from "@/lib/constants";
-import { Tab, Tabs } from "@nextui-org/react";
+import { Spinner, Tab, Tabs } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 
 const DynamicTabs = () => {
@@ -41,26 +41,38 @@ const DynamicTabs = () => {
   const categories: any = sortProductByCategoryForTabs(products);
   return (
     <div className="">
-      <Tabs
-        className="mt-5 ml-3 w-[70%] overflow-x-hidden"
-        aria-label="Dynamic tabs"
-        items={categories}
-        variant="solid"
-        color="primary"
-      >
-        {(item: any) => (
-          <Tab key={item.id} title={item.label}>
-            <div className="first-of-type:mt-2 mt-14">
-              <h1 className="font-bold uppercase text-2xl py-4 border-b-1 px-4">
-                {item.label}
-              </h1>
-              <div className="w-[80%] min-h-[230px] py-2 px-8">
-                <FeatureCarousel products={item.content} />
+      {products.length === 0 ? (
+        <div className="flex items-center justify-center h-[90vh] w-screen">
+          <Spinner
+            size="lg"
+            color="warning"
+            label="loading..."
+            labelColor="warning"
+            className="text-center uppercase text-2xl font-semibold"
+          />
+        </div>
+      ) : (
+        <Tabs
+          className="mt-5 ml-3 w-[70%] overflow-x-hidden"
+          aria-label="Dynamic tabs"
+          items={categories}
+          variant="solid"
+          color="primary"
+        >
+          {(item: any) => (
+            <Tab key={item.id} title={item.label}>
+              <div className="first-of-type:mt-2 mt-14">
+                <h1 className="font-bold uppercase text-2xl py-4 border-b-1 px-4">
+                  {item.label}
+                </h1>
+                <div className="w-[80%] min-h-[230px] py-2 px-8">
+                  <FeatureCarousel products={item.content} />
+                </div>
               </div>
-            </div>
-          </Tab>
-        )}
-      </Tabs>
+            </Tab>
+          )}
+        </Tabs>
+      )}
     </div>
   );
 };

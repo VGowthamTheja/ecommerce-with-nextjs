@@ -18,6 +18,7 @@ import CountryMap from "./CountryMap";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useAppState } from "@/context/state";
+import UserAvatar from "./UserAvatar";
 
 const SideNavMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,26 +28,6 @@ const SideNavMenu = () => {
     console.log("toggleMenu");
 
     setIsOpen(!isOpen);
-  };
-
-  const logout = async () => {
-    try {
-      await fetch("/api/auth/logout", {
-        method: "GET",
-
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((res) => {
-        if (res.ok) {
-          toast.success("Logout success");
-          router.push("/authorize");
-        }
-      });
-    } catch (error: any) {
-      console.log(error.error);
-      toast.error(error.error);
-    }
   };
 
   return (
@@ -75,55 +56,20 @@ const SideNavMenu = () => {
         {state.currentUser ? (
           <div className="flex flex-col items-start justify-center pt-10">
             {/* user info */}
-            <Dropdown>
-              <DropdownTrigger>
-                <User
-                  className="border-b-1 cursor-pointer"
-                  name={
-                    state.currentUser.user.first_name +
-                    " " +
-                    state.currentUser.user.last_name
-                  }
-                  description={
-                    <Link
-                      href="https://twitter.com/jrgarciadev"
-                      size="sm"
-                      isExternal
-                    >
-                      @jrgarciadev
-                    </Link>
-                  }
-                  avatarProps={{
-                    src: "https://avatars.githubusercontent.com/u/30373425?v=4",
-                  }}
-                />
-              </DropdownTrigger>
-              <DropdownMenu aria-label="Static Actions">
-                <DropdownItem
-                  key="profile"
-                  onClick={() => router.push("/profile")}
-                >
-                  Profile
-                </DropdownItem>
-                <DropdownItem key="copy">Copy link</DropdownItem>
-                <DropdownItem key="edit">Edit file</DropdownItem>
-                <DropdownItem
-                  onClick={logout}
-                  key="delete"
-                  className="text-danger"
-                  color="danger"
-                >
-                  Logout
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+            <UserAvatar
+              username={
+                state.currentUser.user.first_name +
+                " " +
+                state.currentUser.user.last_name
+              }
+            />
           </div>
         ) : (
           <p className="mt-8">
-            Not logged in? <Link href="/login">login</Link>
+            Not logged in? <Link href="/authorize">login</Link>
           </p>
         )}
-        <hr className="h-[2px] text-black w-[88%] bg-black" />
+        <hr className="h-[2px] mt-2 text-black w-[88%] bg-black" />
 
         <div className="absolute bottom-20 w-[159px] right-8 flex items-center text-black">
           <CountryMap />
