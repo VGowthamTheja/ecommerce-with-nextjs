@@ -8,6 +8,7 @@ interface AppState {
   currencySymbol: string;
   products: never[];
   total: number;
+  currentUser: any;
 }
 
 interface ProviderProps {
@@ -20,6 +21,7 @@ const initialState: AppState = {
   currencySymbol: "$",
   products: [],
   total: 0,
+  currentUser: null,
 };
 
 const StateContext = createContext<{

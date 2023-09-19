@@ -1,12 +1,33 @@
 "use client";
 
 import FeatureCarousel from "@/components/FeatureCarousel";
+import { useAppState } from "@/context/state";
 import { sortProductByCategoryForTabs } from "@/lib/constants";
 import { Tab, Tabs } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 
 const DynamicTabs = () => {
   const [products, setProducts] = useState([]);
+  const { state, setState } = useAppState();
+
+  useEffect(() => {
+    async function getCurrentUser() {
+      const response = await fetch("/api/auth/current_user");
+      const currentUser = await response.json();
+
+      if (currentUser.error === "No token present") {
+        return;
+      }
+
+      setState((prevState) => ({
+        ...prevState,
+        currentUser,
+      }));
+    }
+    getCurrentUser();
+  }, []);
+
+  console.log("state", state);
 
   useEffect(() => {
     const fetchProducts = async () => {

@@ -24,7 +24,7 @@ const Topbar = () => {
       height="5rem"
     >
       <NavbarBrand>
-        <Logo />
+        <Logo width={50} height={50} />
         <p className="font-bold text-inherit uppercase text-lg tracking-widest select-none ml-4">
           NextCommerce
         </p>

@@ -6,6 +6,12 @@ import prisma from "@/prisma/db";
 
 export async function GET(req: NextRequest) {
     try {
+
+        const isTokenPresent = req.cookies.get('token')?.value;
+        if (!isTokenPresent) {
+            return NextResponse.json({ error: "No token present" }, { status: 401 });
+        }
+
         const currentUser = await getDataFromToken(req);
         const user = await prisma.users.findUnique({
             where: {
