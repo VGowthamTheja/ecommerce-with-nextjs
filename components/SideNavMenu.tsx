@@ -17,9 +17,11 @@ import { Fragment, useState } from "react";
 import CountryMap from "./CountryMap";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useAppState } from "@/context/state";
 
 const SideNavMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { state } = useAppState();
   const router = useRouter();
   const toggleMenu = () => {
     console.log("toggleMenu");
@@ -38,7 +40,7 @@ const SideNavMenu = () => {
       }).then((res) => {
         if (res.ok) {
           toast.success("Logout success");
-          router.push("/login");
+          router.push("/authorize");
         }
       });
     } catch (error: any) {
@@ -70,43 +72,58 @@ const SideNavMenu = () => {
         >
           <IconClose />
         </Button>
-        <div className="flex flex-col items-start justify-center pt-10">
-          {/* user info */}
-          <Dropdown>
-            <DropdownTrigger>
-              <User
-                className="border-b-1 cursor-pointer"
-                name="Junior Garcia"
-                description={
-                  <Link
-                    href="https://twitter.com/jrgarciadev"
-                    size="sm"
-                    isExternal
-                  >
-                    @jrgarciadev
-                  </Link>
-                }
-                avatarProps={{
-                  src: "https://avatars.githubusercontent.com/u/30373425?v=4",
-                }}
-              />
-            </DropdownTrigger>
-            <DropdownMenu aria-label="Static Actions">
-              <DropdownItem key="new">New file</DropdownItem>
-              <DropdownItem key="copy">Copy link</DropdownItem>
-              <DropdownItem key="edit">Edit file</DropdownItem>
-              <DropdownItem
-                onClick={logout}
-                key="delete"
-                className="text-danger"
-                color="danger"
-              >
-                Logout
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          <hr className="h-[2px] text-black w-[88%] bg-black" />
-        </div>
+        {state.currentUser ? (
+          <div className="flex flex-col items-start justify-center pt-10">
+            {/* user info */}
+            <Dropdown>
+              <DropdownTrigger>
+                <User
+                  className="border-b-1 cursor-pointer"
+                  name={
+                    state.currentUser.user.first_name +
+                    " " +
+                    state.currentUser.user.last_name
+                  }
+                  description={
+                    <Link
+                      href="https://twitter.com/jrgarciadev"
+                      size="sm"
+                      isExternal
+                    >
+                      @jrgarciadev
+                    </Link>
+                  }
+                  avatarProps={{
+                    src: "https://avatars.githubusercontent.com/u/30373425?v=4",
+                  }}
+                />
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Static Actions">
+                <DropdownItem
+                  key="profile"
+                  onClick={() => router.push("/profile")}
+                >
+                  Profile
+                </DropdownItem>
+                <DropdownItem key="copy">Copy link</DropdownItem>
+                <DropdownItem key="edit">Edit file</DropdownItem>
+                <DropdownItem
+                  onClick={logout}
+                  key="delete"
+                  className="text-danger"
+                  color="danger"
+                >
+                  Logout
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
+        ) : (
+          <p className="mt-8">
+            Not logged in? <Link href="/login">login</Link>
+          </p>
+        )}
+        <hr className="h-[2px] text-black w-[88%] bg-black" />
 
         <div className="absolute bottom-20 w-[159px] right-8 flex items-center text-black">
           <CountryMap />

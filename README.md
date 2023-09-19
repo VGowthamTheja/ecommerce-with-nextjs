@@ -96,8 +96,6 @@ Contact me at [My GitHub](https://github.com/VGowthamTheja/ecommerce-with-nextjs
 
 ![badmath](https://img.shields.io/github/issues-pr/nielsenjared/badmath)
 
-![badmath](https://img.shields.io/github/last-commit/nielsenjared/badmath)
-
 ![badmath](https://img.shields.io/github/followers/nielsenjared?label=Follow&style=social)
 
 ## Features
