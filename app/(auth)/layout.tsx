@@ -2,6 +2,7 @@ import { Providers } from "@/lib/Provider";
 import "../globals.css";
 import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
+import { StateProvider } from "@/context/state";
 
 export const metadata: Metadata = {
   title: "NextCommerce: Register",
@@ -16,8 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Toaster />
-        {children}
+        <StateProvider>
+          <Toaster />
+          {children}
+        </StateProvider>
       </body>
     </html>
   );
